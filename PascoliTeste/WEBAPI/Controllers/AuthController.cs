@@ -40,7 +40,7 @@ namespace WEBAPI.Controllers
             }
         }
 
-        [AllowAnonymous]
+      
         [Authorize]
         [HttpPatch("UpdatePassword")]
         public async Task<IActionResult> UpdatePasswordAsync([FromBody] ChangePasswordRequestDto dto)
