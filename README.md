@@ -44,7 +44,9 @@ json
   "password": "string",
   "birthday": "2023-09-03T14:47:15.578Z"
 }
+
 Depois, faça o login 
+
 POST https://localhost:7127/api/Auth/Login
 {
   "email": "string",
