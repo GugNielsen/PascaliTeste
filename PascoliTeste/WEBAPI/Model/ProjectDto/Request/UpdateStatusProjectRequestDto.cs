@@ -7,7 +7,7 @@
     {
         public class UpdateStatusProjectRequestDto
         {
-            public Guid Id { get; set; }
+            public Guid IdProject { get; set; }
             public int Status { get; set; }
 
             public static implicit operator Project(UpdateStatusProjectRequestDto dto)
@@ -16,7 +16,7 @@
 
                 return new Project
                 {
-                    Id = dto.Id,
+                    Id = dto.IdProject,
                     Status = dto.Status,
                 };
             }
@@ -27,7 +27,7 @@
 
                 return new UpdateStatusProjectRequestDto
                 {
-                    Id = project.Id,
+                    IdProject = project.Id,
                     Status = project.Status,
                 };
             }
