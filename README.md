@@ -35,8 +35,8 @@ Após a configuração do banco de dados, você pode executar o Visual Studio. E
 
 Criação de Usuário na API
 Utilize o seguinte JSON como exemplo para criar seu usuário através da API 'User Create':
+
 POST https://localhost:7127/api/User/Create
-json
 {
   "firstName": "string",
   "lastName": "string",
@@ -52,6 +52,7 @@ POST https://localhost:7127/api/Auth/Login
   "email": "string",
   "password": "string"
 }
+
 com o usuário e a senha criados. Uma vez logado, você receberá um Token JWT, que deverá ser inserido no Swagger. Para isso, clique no botão 'Authorize' localizado na parte superior da página e insira "Bearer 'seu Token'" no campo fornecido.
 
 Após a autorização, você estará habilitado para criar projetos, alterar o status dos projetos e navegar nas APIs.
