@@ -90,7 +90,11 @@ namespace WEBAPI.Controllers
             try
             {
                 bool result = await _projectService.UpdateProjectResponsibilityAsync(project);
-                return Ok(result);
+               
+                if (!result)
+                    return BadRequest(result);
+              
+                return Ok("Um Email para o Responsavel foi enviado");
             }
             catch (ValidationException ex)
             {

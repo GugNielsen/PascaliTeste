@@ -54,7 +54,7 @@ namespace PascoliTesteAPI.Controllers
             {
                 bool result = await _userServices.UpdateAsync(user);
                 if (result)
-                    return Ok();
+                    return Ok(result);
                 else
                     return StatusCode(StatusCodes.Status500InternalServerError);
             }
@@ -74,7 +74,7 @@ namespace PascoliTesteAPI.Controllers
         {
             bool result = await _userServices.DeleteAsync(userid);
             if (result)
-                return Ok();
+                return Ok(result);
             else
                 return StatusCode(StatusCodes.Status500InternalServerError);
         }
@@ -92,6 +92,16 @@ namespace PascoliTesteAPI.Controllers
         public async Task<IActionResult> GetByIdAsync(Guid id)
         {
             UserResponseDto user = await _userServices.GetByIdAsync(id);
+            if (user != null)
+                return Ok(user);
+            else
+                return NotFound();
+        }
+
+        [HttpGet("GetByEmail/{email}")]
+        public async Task<IActionResult> GetByEmailAsync(string email)
+        {
+            UserResponseDto user = await _userServices.GetByEmailAsync(email);
             if (user != null)
                 return Ok(user);
             else

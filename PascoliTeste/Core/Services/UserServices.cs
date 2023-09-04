@@ -47,6 +47,12 @@ namespace Core.Services
             return user;
         }
 
+        public async Task<User> GetByEmailAsync(string email)
+        {
+            var user = await _userRepository.UserGetByEmailAsync(email);
+            return user;
+        }
+
         public async Task<List<User>> GetAllAsync()
         {
             List<User> usersList = new List<User>();
