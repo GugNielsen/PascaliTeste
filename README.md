@@ -11,7 +11,6 @@ Esta é a conexão do meu banco de dados local.
 Depois, em um banco de dados SQL Server de sua preferência, execute os seguintes scripts para criar as tabelas 'Projects' e 'Users':
 
 sql
-Copy code
 CREATE TABLE Projects (
   Id UNIQUEIDENTIFIER PRIMARY KEY,
   ResponsibilityUserId UNIQUEIDENTIFIER,
@@ -36,7 +35,7 @@ Após a configuração do banco de dados, você pode executar o Visual Studio. E
 
 Criação de Usuário na API
 Utilize o seguinte JSON como exemplo para criar seu usuário através da API 'User Create':
-https://localhost:7127/api/User/Create
+POST https://localhost:7127/api/User/Create
 json
 {
   "firstName": "string",
@@ -46,7 +45,7 @@ json
   "birthday": "2023-09-03T14:47:15.578Z"
 }
 Depois, faça o login 
-https://localhost:7127/api/Auth/Login
+POST https://localhost:7127/api/Auth/Login
 {
   "email": "string",
   "password": "string"
@@ -61,23 +60,28 @@ Além disso, por questões de tempo, criei testes unitários apenas para os usu�
 
 as principais Apis são alem dessas duas 
 
-https://localhost:7127/api/Project/Create
+POST https://localhost:7127/api/Project/Create
 {
   "createUserId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "title": "string",
   "description": "string"
 }
-https://localhost:7127/api/Project/UpdateStatus
+
+
+Patch https://localhost:7127/api/Project/UpdateStatus
 {
   "idProject": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "status": 0
 }
-https://localhost:7127/api/Project/UpdateResponsibility
+
+
+Patch https://localhost:7127/api/Project/UpdateResponsibility
 {
   "idProject": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "responsibilityUserId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
 }
-https://localhost:7127/api/Status/GetAll
+
+GET https://localhost:7127/api/Status/GetAll
 
 Espero que isso ajude! Se precisar de mais alguma coisa, por favor, me avise.
 
