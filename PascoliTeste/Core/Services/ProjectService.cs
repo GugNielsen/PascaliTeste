@@ -69,9 +69,13 @@ namespace Core.Services
             {
                 var user = await _userServices.GetByIdAsync(project.ResponsibilityUserId.Value);
 
-                var emailSubject = "Atualização de Responsabilidade de Projeto";
-                var emailMessage = $"Olá {user.FirstName}, você foi designado como responsável pelo projeto: {project.Title}.";
-                await _emailService.SendEmailAsync(user.Email, emailSubject, emailMessage);
+                if (user != null)
+                {
+                    var emailSubject = "Atualização de Responsabilidade de Projeto";
+                    var emailMessage = $"Olá {user.FirstName}, você foi designado como responsável pelo projeto: {project.Title}.";
+                    await _emailService.SendEmailAsync(user.Email, emailSubject, emailMessage);
+                }
+              
             }
 
             return res;
