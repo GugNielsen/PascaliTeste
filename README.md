@@ -1,14 +1,14 @@
 # PascaliTeste
 
-ConfiguraÁ„o do Banco de Dados
-Primeiro, navegue atÈ a pasta 'webApi' e abra o arquivo 'appsettings.json'. Em seguida, altere a string de conex„o do banco de dados na seÁ„o "ConnectionStrings":
+Configura√ß√£o do Banco de Dados
+Primeiro, navegue at√© a pasta 'webApi' e abra o arquivo 'appsettings.json'. Em seguida, altere a string de conex√£o do banco de dados na se√ß√£o "ConnectionStrings":
 
 "ConnectionStrings": {
   "ApiConnection": "Server=DESKTOP-6R0VU8E\\SQLEXPRESS;Database=master;Trusted_Connection=True;"
 }
-Esta È a conex„o do meu banco de dados local.
+Esta √© a conex√£o do meu banco de dados local.
 
-Depois, em um banco de dados SQL Server de sua preferÍncia, execute os seguintes scripts para criar as tabelas 'Projects' e 'Users':
+Depois, em um banco de dados SQL Server de sua prefer√™ncia, execute os seguintes scripts para criar as tabelas 'Projects' e 'Users':
 
 sql
 Copy code
@@ -31,12 +31,12 @@ CREATE TABLE Users (
   Password VARCHAR(255) NOT NULL,
   Birthday DATETIME NOT NULL
 );
-ExecuÁ„o do Visual Studio
-ApÛs a configuraÁ„o do banco de dados, vocÍ pode executar o Visual Studio. Eu habilitei o Swagger para facilitar o deploy.
+Execu√ß√£o do Visual Studio
+Ap√≥s a configura√ß√£o do banco de dados, voc√™ pode executar o Visual Studio. Eu habilitei o Swagger para facilitar o deploy.
 
-CriaÁ„o de Usu·rio na API
-Utilize o seguinte JSON como exemplo para criar seu usu·rio atravÈs da API 'User Create':
-
+Cria√ß√£o de Usu√°rio na API
+Utilize o seguinte JSON como exemplo para criar seu usu√°rio atrav√©s da API 'User Create':
+https://localhost:7127/api/User/Create
 json
 {
   "firstName": "string",
@@ -45,13 +45,39 @@ json
   "password": "string",
   "birthday": "2023-09-03T14:47:15.578Z"
 }
-Depois, faÁa o login com o usu·rio e a senha criados. Uma vez logado, vocÍ receber· um Token JWT, que dever· ser inserido no Swagger. Para isso, clique no bot„o 'Authorize' localizado na parte superior da p·gina e insira "Bearer 'seu Token'" no campo fornecido.
+Depois, fa√ßa o login 
+https://localhost:7127/api/Auth/Login
+{
+  "email": "string",
+  "password": "string"
+}
+com o usu√°rio e a senha criados. Uma vez logado, voc√™ receber√° um Token JWT, que dever√° ser inserido no Swagger. Para isso, clique no bot√£o 'Authorize' localizado na parte superior da p√°gina e insira "Bearer 'seu Token'" no campo fornecido.
 
-ApÛs a autorizaÁ„o, vocÍ estar· habilitado para criar projetos, alterar o status dos projetos e navegar nas APIs.
+Ap√≥s a autoriza√ß√£o, voc√™ estar√° habilitado para criar projetos, alterar o status dos projetos e navegar nas APIs.
 
-Quando for definir a responsabilidade de um projeto, o usu·rio selecionado receber· um e-mail. Como se trata de um teste, n„o criei nenhum e-mail elaborado.
+Quando for definir a responsabilidade de um projeto, o usu√°rio selecionado receber√° um e-mail. Como se trata de um teste, n√£o criei nenhum e-mail elaborado.
 
-AlÈm disso, por questıes de tempo, criei testes unit·rios apenas para os usu·rios, e n„o para todas as funcionalidades.
+Al√©m disso, por quest√µes de tempo, criei testes unit√°rios apenas para os usu√°rios, e n√£o para todas as funcionalidades.
+
+as principais Apis s√£o alem dessas duas 
+
+https://localhost:7127/api/Project/Create
+{
+  "createUserId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "title": "string",
+  "description": "string"
+}
+https://localhost:7127/api/Project/UpdateStatus
+{
+  "idProject": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "status": 0
+}
+https://localhost:7127/api/Project/UpdateResponsibility
+{
+  "idProject": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "responsibilityUserId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+}
+https://localhost:7127/api/Status/GetAll
 
 Espero que isso ajude! Se precisar de mais alguma coisa, por favor, me avise.
 
